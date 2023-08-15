@@ -9,6 +9,16 @@ menu = """
 
 => """
 
+"""
+pegar itens de um dicionário de forma iterativa
+
+for chave, valor in dicionario.items()
+    print(chave, valor)
+
+.copy()
+
+"""
+
 LIMITE_SAQUE_VALOR = 500
 LIMITE_SAQUES = 3
 valor_inicial = 1000
@@ -51,4 +61,13 @@ if __name__ == "__main__":
     main()
 
 def criaNumeroConta():
+    pass
+
+def registraUsuarios():
+    pass
+
+def criarConta():
+    pass
+
+def validaCPF():
     pass
