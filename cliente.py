@@ -7,8 +7,6 @@ class Cliente:
         self.__endereco = endereco
         self.__agencia = "0001"
 
-    def criaNumeroConta(self):
-        pass
 
 
 
