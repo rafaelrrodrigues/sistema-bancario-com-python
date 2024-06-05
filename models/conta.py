@@ -1,10 +1,10 @@
-from cliente import Cliente
-from sistema import LIMITE_SAQUE_VALOR, LIMITE_SAQUES, criaNumeroConta
+from models.cliente import Cliente
+from banco import LIMITE_SAQUE_VALOR, LIMITE_SAQUES
 
 class Conta(Cliente):
-    def __init__(self, nome, saldo) -> None:
-        self.__numero_conta = criaNumeroConta()
-        self.__saldo = saldo
+    def __init__(self, numero_conta) -> None:
+        self.__numero_conta = numero_conta
+        self.__saldo = 0
         self.__extrato = []
         self.__saques = 0
         self.__valor = 0
@@ -39,7 +39,7 @@ class Conta(Cliente):
         lancamento = "Deposito R$" + str("{:.2f}".format(deposito)) + " efetuado."
         self.extrato = lancamento
 
-        # Verifica as Regras de Negocio para o saque
+    # Verifica as Regras de Negocio para o saque
     def condicoesSaque(self):
         if self.__saques >= LIMITE_SAQUES:
             print("Limite de saques diários atingido")
@@ -78,3 +78,5 @@ class Conta(Cliente):
     # Retorna True se o valor possuir 2 casas apos a virgula e for maior que zero
     def validaValor(self, valor):
         return True if len(str(valor).split('.')[-1]) <= 2 and valor > 0 else False
+    
+    

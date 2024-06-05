@@ -6,9 +6,8 @@ class Cliente:
         self.__cpf = cpf
         self.__endereco = endereco
         self.__agencia = "0001"
+        self.__ativo = True
 
-
-
-
-
-    
+    @property
+    def recuperaCpf(self):
+        return self.__cpf
