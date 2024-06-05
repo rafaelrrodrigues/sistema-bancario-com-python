@@ -1,19 +1,10 @@
-menu = """
-[1] Sacar
-[2] Depositar
-[3] Extrato
-[4] Sair
+from models.cliente import Cliente
+from banco import LIMITE_SAQUE_VALOR, LIMITE_SAQUES
 
-=> """
-
-LIMITE_SAQUE_VALOR = 500
-LIMITE_SAQUES = 3
-valor_inicial = 1000
-
-class Cliente:
-    def __init__(self, nome, saldo) -> None:
-        self.__nome = nome
-        self.__saldo = saldo
+class Conta(Cliente):
+    def __init__(self, numero_conta) -> None:
+        self.__numero_conta = numero_conta
+        self.__saldo = 0
         self.__extrato = []
         self.__saques = 0
         self.__valor = 0
@@ -87,41 +78,5 @@ class Cliente:
     # Retorna True se o valor possuir 2 casas apos a virgula e for maior que zero
     def validaValor(self, valor):
         return True if len(str(valor).split('.')[-1]) <= 2 and valor > 0 else False
-
-
-def main():
-    user1 = Cliente("Rafael", valor_inicial)
-    print("Bem-vindo", user1.nome)
-    user1.extrato = "Valor inicial R$ " + str("{:.2f}".format(round(valor_inicial, 2)))
-
-    while True:
-        print("Saldo:   R$" + user1.saldo)
-        opcao = input(menu)
-        
-        # Saque
-        if opcao == "1":
-            if not user1.condicoesSaque():
-                print("Nao foi possivel realizar o saque")
-            pass
-        
-        # Deposito
-        elif opcao == "2":
-            if not user1.condicoesDeposito():
-                print("Nao foi possivel realizar o deposito")
-            pass
-
-        # Extrato
-        elif opcao == "3":
-            extrat = user1.extrato
-            for i in extrat:
-                print(i)
-            pass
-
-        elif opcao == "4":
-            exit()
-
-        else:
-            print("Opcao invalida")
-
-if __name__ == "__main__":
-    main()
+    
+    
